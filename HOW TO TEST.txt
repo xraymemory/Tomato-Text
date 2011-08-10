@@ -1,0 +1,33 @@
+Since a TWILIO trial account only allows one and only one number to text it,
+Rotten Response's cellular messaging capabilities are unable to be tested
+
+HOWEVER!
+
+You can still test Rotten Response's ability to fetch RT critic scores.
+
+to do so, simply comment these two lines [lines 34 and 35 respectively] like so:
+
+#app = cherrypy.tree.mount(rottenResponse(), "/")
+#wsgiref.handlers.CGIHandler().run(app)
+
+and then uncomment lines 38 and 39 so you have:
+
+app = cherrypy.tree.mount(rottenResponse(), "/")
+cherrypy.quickstart(app)
+
+Next, run the python program. You should see some output regarding BUS ENGINE and whatnot.
+That's fine, it's just cherrypy interfacing with HTTP.
+
+Let's say you want to see the rating for the movie "Fight Club." With IDLE still running
+rottenresponse.py, point your web browser to 
+
+http://localhost:8080/?Body=Fight Club
+
+The rating (81) will be displayed in plain text. To search for another movie, simply
+edit the ?Body= query 
+
+examples
+
+http://localhost:8080/?Body=Life of Brian [will result in "96"]
+http://localhost:8080/?Body=The Lion King [will result in "92"]
+etc
